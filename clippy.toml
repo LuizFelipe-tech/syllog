@@ -1,0 +1,65 @@
+# clippy.toml
+#
+# Behavior thresholds and lint configurations for syllog.
+msrv = "1.94.0"
+
+# Avoid breaking public API signatures when Clippy suggests optimizations.
+avoid-breaking-exported-api = true
+
+# ==============================================================================
+# Complexity Metrics
+# ==============================================================================
+
+# Enforces modular design and clean stack evaluation functions.
+cognitive-complexity-threshold = 25
+type-complexity-threshold = 250
+
+# Sets strict thresholds to prevent monolithic functions and unwieldy APIs.
+too-many-arguments-threshold = 6
+too-many-lines-threshold = 150
+
+# ==============================================================================
+# Memory and Type Layout Thresholds
+# ==============================================================================
+
+array-size-threshold = 512
+large-error-threshold = 128
+enum-variant-size-threshold = 256
+struct-field-name-threshold = 3
+pass-by-value-size-limit = 256
+trivial-copy-size-limit = 64
+
+# ==============================================================================
+# Naming, Acronyms, and Domain Vocabulary
+# ==============================================================================
+
+# Specifies identifiers and acronyms permitted in documentation without Markdown backticks.
+doc-valid-idents = [
+    "AND",
+    "CLI",
+    "CPU",
+    "IO",
+    "Lexer",
+    "NOT",
+    "OR",
+    "Parser",
+    "RAM",
+    "RPN",
+    "Rustacean",
+    "Syllog",
+    "Token",
+    "UTF8",
+    "XOR",
+]
+
+# Flags wildcard imports across the codebase to maintain explicit scope visibility.
+warn-on-all-wildcard-imports = true
+
+# ==============================================================================
+# Test Environment Overrides
+# ==============================================================================
+
+allow-dbg-in-tests = true
+allow-expect-in-tests = true
+allow-unwrap-in-tests = true
+allow-print-in-tests = true

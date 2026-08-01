@@ -1,0 +1,73 @@
+# ==============================================================================
+# Rust & Cargo Build Artifacts
+# ==============================================================================
+/target/
+**/*.rs.bk
+*.rmeta
+
+# Profiling and LLVM Code Coverage (cargo-llvm-cov)
+*.profraw
+*.profdata
+/target/llvm-cov/
+
+# Note: 'Cargo.lock' is intentionally NOT ignored because 'syllog' includes a 
+# binary executable ([[bin]]). Tracking 'Cargo.lock' ensures deterministic builds.
+
+# ==============================================================================
+# IDEs & Code Editors
+# ==============================================================================
+
+# JetBrains (RustRover / CLion / IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Vim / Emacs temporary files
+*~
+*.swp
+*.swo
+
+# ==============================================================================
+# Operating System & Environment
+# ==============================================================================
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthru.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+.directory
+
+# Local Environment & Secrets
+.env
+.env.local
+.env.*.local
+
+# ==============================================================================
+# Local Testing & CI Tooling
+# ==============================================================================
+# Local act (GitHub Actions simulator) artifacts
+.act/

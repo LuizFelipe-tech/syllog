@@ -1,0 +1,52 @@
+# rustfmt.toml
+#
+# Code formatting configuration for syllog.
+# Note: Advanced formatting rules require the Nightly toolchain or `cargo +nightly fmt`.
+
+edition = "2024"
+max_width = 100
+unstable_features = true
+
+# Prevents aggressive collapsing of multi-line expressions into a single line.
+use_small_heuristics = "Default"
+
+# ==============================================================================
+# Strings and Documentation Formatting
+# ==============================================================================
+
+format_strings = true
+format_code_in_doc_comments = true
+wrap_comments = true
+comment_width = 80
+normalize_comments = true
+
+# ==============================================================================
+# Import Organization and Grouping
+# ==============================================================================
+
+# Groups imports into standard library, external crates, and local modules.
+imports_granularity = "Crate"
+group_imports = "StdExternalCrate"
+reorder_imports = true
+
+# ==============================================================================
+# Code Structure and Ordering
+# ==============================================================================
+
+reorder_impl_items = true
+reorder_modules = true
+format_macro_matchers = true
+
+# ==============================================================================
+# Braces, Spacing, and Trailing Commas
+# ==============================================================================
+
+brace_style = "SameLineWhere"
+control_brace_style = "AlwaysSameLine"
+indent_style = "Block"
+
+# Ensures clear line boundaries in match expressions.
+match_arm_blocks = true
+match_block_trailing_comma = true
+trailing_comma = "Vertical"
+type_punctuation_density = "Wide"
