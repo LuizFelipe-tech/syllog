@@ -1,0 +1,7 @@
+# rust-toolchain.toml
+#
+# Enforces Nightly toolchain usage for advanced formatting and linting features.
+
+[toolchain]
+channel = "nightly"
+components = ["rustfmt", "clippy"]

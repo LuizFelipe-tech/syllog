@@ -1,0 +1,7 @@
+# .rumdl.toml
+[rules]
+# Exemplo: Desativa a regra de tamanho máximo de linha para não atrapalhar parágrafos longos
+MD013 = false
+
+# Força o uso de traço (-) em listas não ordenadas
+MD004 = { style = "dash" }

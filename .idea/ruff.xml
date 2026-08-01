@@ -2,5 +2,8 @@
 <project version="4">
   <component name="RuffConfigService">
     <option name="globalRuffExecutablePath" value="C:\Users\luizf\.local\bin\ruff.exe" />
+    <option name="useIntellijLspClient" value="false" />
+    <option name="useLsp4ij" value="true" />
+    <option name="useRuffServer" value="true" />
   </component>
 </project>
