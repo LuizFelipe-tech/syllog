@@ -15,7 +15,7 @@
 // System: Syllog
 // Domain: Token Model & Lexical Representation
 
-mod learn;
+mod error;
 mod lexer;
 
 fn main() {

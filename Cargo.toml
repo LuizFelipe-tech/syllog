@@ -68,3 +68,6 @@ lto = "fat"
 codegen-units = 1
 panic = "abort"
 strip = true
+
+[dependencies]
+thiserror = "2.0.20"
