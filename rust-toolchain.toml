@@ -3,5 +3,6 @@
 # Enforces Nightly toolchain usage for advanced formatting and linting features.
 
 [toolchain]
-channel = "nightly"
+channel = "nightly-2026-08-01"
 components = ["rustfmt", "clippy"]
+profile = "minimal"

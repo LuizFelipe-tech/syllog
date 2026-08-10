@@ -105,4 +105,8 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: 📊 Generate Coverage Summary
-        run: cargo llvm-cov --all-features --workspace --summary-only
+        run: |
+          echo "### Code Coverage Report 📊" >> $GITHUB_STEP_SUMMARY
+          echo '```text' >> $GITHUB_STEP_SUMMARY
+          cargo llvm-cov --all-features --workspace --summary-only >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY

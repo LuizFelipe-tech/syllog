@@ -22,21 +22,31 @@ alias t := test
 alias l := lint
 
 # ==============================================================================
+# Environment Setup (DX)
+# ==============================================================================
+
+# Installs all required CLI tools for local development. Run this once after cloning.
+[group('setup')]
+bootstrap:
+    cargo install cargo-audit cargo-llvm-cov
+    @echo "Note: Ensure 'vale' is installed via your system package manager (brew, apt, winget)."
+
+# ==============================================================================
 # Code Formatting & Prose
 # ==============================================================================
 
-[group('quality')]
 # Formats all Rust source files (uses Nightly toolchain from rust-toolchain.toml).
+[group('quality')]
 fmt:
     cargo fmt
 
-[group('quality')]
 # Verifies that all source files conform to formatting standards without modifying them.
+[group('quality')]
 fmt-check:
     cargo fmt --check
 
-[group('quality')]
 # Runs Vale to check documentation prose and grammar against style policies.
+[group('quality')]
 spell:
     vale src/ docs/ README.md
 
@@ -44,18 +54,18 @@ spell:
 # Static Analysis & Security
 # ==============================================================================
 
-[group('linting')]
 # Runs a permissive clippy configuration suitable for rapid local development.
+[group('linting')]
 lint-dev:
     cargo clippy {{ CARGO_FLAGS }}
 
-[group('linting')]
 # Runs strict clippy analysis, treating all linter warnings as compiler errors.
+[group('linting')]
 lint:
     cargo clippy {{ CARGO_FLAGS }} -- -D warnings
 
-[group('security')]
 # Audits dependencies for known security vulnerabilities. Requires 'cargo-audit'.
+[group('security')]
 audit:
     cargo audit
 
@@ -63,18 +73,18 @@ audit:
 # Testing & Code Coverage
 # ==============================================================================
 
-[group('testing')]
 # Executes the complete test suite.
+[group('testing')]
 test:
     cargo test --all-features
 
-[group('testing')]
 # Generates a quick text-based code coverage report. Requires 'cargo-llvm-cov'.
+[group('testing')]
 cov:
     cargo llvm-cov --all-features --workspace --summary-only
 
-[group('testing')]
 # Generates an interactive HTML code coverage report. Requires 'cargo-llvm-cov'.
+[group('testing')]
 cov-html:
     cargo llvm-cov --all-features --workspace --html
     @echo "Interactive report available at: target/llvm-cov/html/index.html"
@@ -83,17 +93,17 @@ cov-html:
 # CI Workflow & Maintenance
 # ==============================================================================
 
-[group('ci')]
 # Simulates GitHub Actions workflows locally using act. Requires Docker.
+[group('ci')]
 ci-local:
     act pull_request
 
-[group('utility')]
 # Cleans build artifacts and intermediate files.
+[group('utility')]
 clean:
     cargo clean
 
-[group('ci')]
 # Performs a comprehensive verification check prior to committing or pushing code.
+[group('ci')]
 check-all: fmt-check lint audit spell test cov
     @echo "All verification checks passed successfully. Code meets professional standards."

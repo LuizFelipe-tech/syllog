@@ -1,7 +1,43 @@
-# .rumdl.toml
-[rules]
-# Exemplo: Desativa a regra de tamanho máximo de linha para não atrapalhar parágrafos longos
-MD013 = false
+[global]
+line-length = 80
+respect-gitignore = true
 
-# Força o uso de traço (-) em listas não ordenadas
-MD004 = { style = "dash" }
+# Enforce ATX-style headings (# Heading)
+[MD003]
+style = "atx"
+
+# Enforce 4-space indentation for list nesting
+[MD007]
+indent = 4
+
+# 80-character line limit with standard Google Style Guide exceptions
+[MD013]
+line-length = 80
+code-blocks = false
+tables = false
+headings = false
+reflow = true
+
+# Enforce a single level-1 heading (H1) as document title
+[MD025]
+level = 1
+
+# Disallow HTML tags in favor of native Markdown syntax
+[MD033]
+allowed_elements = []
+
+# Require explicit language declaration in fenced code blocks
+[MD040]
+
+# Enforce proper capitalization for specific terms
+[MD044]
+names = ["Markdown", "GitHub", "Google"]
+code_blocks = false
+
+# Require fenced code blocks instead of 4-space indentation
+[MD046]
+style = "fenced"
+
+# Use backticks for code fence blocks
+[MD048]
+code-fence-style = "backtick"

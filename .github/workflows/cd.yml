@@ -3,7 +3,7 @@ name: Syllog CD
 on:
   push:
     tags:
-      # Triggers on Semantic Versioning tags (e.g. v1.0.0, v0.1.0-alpha.1)
+      # Triggers on Semantic Versioning tags (e.g., v1.0.0, v0.1.0-alpha.1)
       - 'v*.*.*'
 
 # Strict permissions following the Principle of Least Privilege
@@ -102,7 +102,7 @@ jobs:
           files: release_assets/*
           generate_release_notes: true
           draft: false
-          # Automatically marks pre-releases for tags containing hyphens (e.g. v1.0.0-rc.1)
+          # Automatically marks pre-releases for tags containing hyphens (e.g., v1.0.0-rc.1)
           prerelease: ${{ contains(github.ref_name, '-') }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
