@@ -1,19 +1,14 @@
-# styles/config/vocabularies/Syllog/accept.txt
-
-# Nomes do Projeto e Domínio
-Syllog
-RPN
-zero-allocation
-
-# Ferramentas e Ecossistema
-justfile
-rustfmt
 clippy
-proselint
-rustdoc
-
-# Termos Técnicos em Inglês / Siglas
-lexer
 docstrings
 frontmatter
+justfile
+lexer
+Luiz
 MSRV
+Nascimento
+proselint
+RPN
+rustdoc
+rustfmt
+Syllog
+zero-allocation

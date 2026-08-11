@@ -14,6 +14,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // System: Syllog
 // Domain: Token Model & Lexical Representation
+//! # Syllog
+//!
+//! Syllog is a logic engine for evaluating expressions.
 
 mod error;
 mod lexer;

@@ -1,8 +1,9 @@
+# Cargo.toml
 [package]
 name = "syllog"
 version = "0.1.0"
 edition = "2024"
-rust-version = "1.94.0" # <-- ADICIONADO: MSRV explícito para reprodutibilidade
+rust-version = "1.94.0"
 description = "A lightweight, zero-allocation Reverse Polish Notation (RPN) logic evaluator"
 license = "Apache-2.0"
 readme = "README.md"

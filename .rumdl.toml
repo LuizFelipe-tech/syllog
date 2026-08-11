@@ -1,3 +1,4 @@
+# .rumdl.toml
 [global]
 line-length = 80
 respect-gitignore = true

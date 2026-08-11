@@ -1,3 +1,4 @@
+# Justfile
 # Copyright (c) 2026 Luiz Felipe do Nascimento Melos
 # SPDX-License-Identifier: Apache-2.0
 # System: Syllog Logic Engine | Driven by High-Performance Engineering
