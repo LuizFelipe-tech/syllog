@@ -21,9 +21,12 @@ jobs:
   security-audit:
     name: 🛡️ Security Audit
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
     steps:
       - name: 🛎️ Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: 🔒 Run Cargo Audit
         uses: rustsec/audit-check@v2.0.0
@@ -39,17 +42,12 @@ jobs:
       pull-requests: write
     steps:
       - name: 🛎️ Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: 🦀 Install Rust (Stable)
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          components: clippy
-
-      - name: 🌙 Install Rust (Nightly for rustfmt)
+      - name: 🌙 Install Rust Toolchain (Nightly with Clippy & Fmt)
         uses: dtolnay/rust-toolchain@nightly
         with:
-          components: rustfmt
+          components: rustfmt, clippy
 
       - name: ⚡ Setup Rust Cache
         uses: Swatinem/rust-cache@v2
@@ -62,8 +60,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🎨 Check Formatting (Nightly)
-        run: cargo +nightly fmt --check
+      - name: 🎨 Check Formatting
+        run: cargo fmt --check
 
       - name: 🔍 Run Clippy (Strict Mode)
         run: cargo clippy --all-targets --all-features -- -D warnings
@@ -77,10 +75,10 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - name: 🛎️ Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: 🦀 Install Rust (Stable)
-        uses: dtolnay/rust-toolchain@stable
+      - name: 🦀 Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@nightly
 
       - name: ⚡ Setup Rust Cache
         uses: Swatinem/rust-cache@v2
@@ -93,10 +91,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🛎️ Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: 🦀 Install Rust (Stable)
-        uses: dtolnay/rust-toolchain@stable
+      - name: 🦀 Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: llvm-tools-preview
 
       - name: ⚡ Install cargo-llvm-cov
         uses: taiki-e/install-action@cargo-llvm-cov

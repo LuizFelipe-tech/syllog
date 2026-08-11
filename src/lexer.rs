@@ -19,12 +19,12 @@ struct Lexer<'a> {
     charac: CharIndices<'a>,
 }
 
-impl Lexer<'_> {
-    fn new(input: &str) -> Self {
-        let charac = input.char_indices();
+impl<'a> Lexer<'a> {
+    fn new(input: &'a str) -> Self {
+        let mut charac = input.char_indices();
         Lexer {
             input,
-            current_character,
+            current_character: charac.next(),
             charac: input.char_indices(),
         }
     }
@@ -37,7 +37,7 @@ impl Lexer<'_> {
         let mut tokens: Vec<Token> = Vec::new();
         let mut init_idx: usize = 0;
         let mut end_idx: usize = 0;
-        while let Some((idx, c)) = self.current_character {
+        while let Some((idx, mut c)) = self.current_character {
             init_idx = idx;
             while c.is_alphanumeric() {
                 (end_idx, c) = self.current_character.unwrap();

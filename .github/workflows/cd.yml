@@ -43,10 +43,10 @@ jobs:
 
     steps:
       - name: 🛎️ Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: 🦀 Install Rust (Stable)
-        uses: dtolnay/rust-toolchain@stable
+      - name: 🦀 Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@nightly
         with:
           targets: ${{ matrix.target }}
 
@@ -70,7 +70,7 @@ jobs:
           Compress-Archive -Path "target\${{ matrix.target }}\release\syllog.exe" -DestinationPath "${{ matrix.asset_name }}"
 
       - name: 📤 Upload Build Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.artifact_name }}
           path: ${{ matrix.asset_name }}
@@ -82,12 +82,14 @@ jobs:
     name: 🚀 Publish GitHub Release
     needs: build-binaries
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: 🛎️ Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: 📥 Download Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           path: artifacts/
 
@@ -97,7 +99,7 @@ jobs:
           find artifacts/ -type f -exec cp {} release_assets/ \;
 
       - name: 🚀 Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: release_assets/*
           generate_release_notes: true
